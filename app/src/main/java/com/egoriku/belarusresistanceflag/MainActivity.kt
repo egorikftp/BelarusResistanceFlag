@@ -1,37 +1,29 @@
 package com.egoriku.belarusresistanceflag
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
-import androidx.ui.tooling.preview.Preview
-import com.egoriku.belarusresistanceflag.ui.BelarusResistanceFlagTheme
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.egoriku.belarusresistanceflag.databinding.ActivityMainBinding
+import org.koin.androidx.scope.ScopeActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ScopeActivity(R.layout.activity_main) {
+
+    private val viewModel: MainViewModel by viewModel()
+
+    private val binding by viewBinding(ActivityMainBinding::bind, R.id.home_root)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            BelarusResistanceFlagTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
+
+        if (savedInstanceState == null) {
+            viewModel.fetchFlags()
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    BelarusResistanceFlagTheme {
-        Greeting("Android")
+        binding.homeBottomNavigation
+            .setupWithNavController(
+                (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+            )
     }
 }

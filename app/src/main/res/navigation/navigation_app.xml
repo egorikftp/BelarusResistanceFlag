@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_root"
+    app:startDestination="@id/flags">
+
+    <fragment
+        android:id="@+id/flags"
+        android:name="com.egoriku.belarusresistanceflag.flags.presentation.categories.CategoriesFragment"
+        android:label="Flags Categories">
+        <action
+            android:id="@+id/flags_to_about"
+            app:destination="@id/about" />
+        <action
+            android:id="@+id/action_navigation_flags_to_navigation_flags_by_category"
+            app:destination="@id/flags_by_category" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flags_by_category"
+        android:name="com.egoriku.belarusresistanceflag.flags.presentation.detail.DetailFragment"
+        android:label="Flags by category">
+        <action android:id="@+id/detail_params">
+            <argument
+                android:name="area"
+                app:argType="com.egoriku.belarusresistanceflag.flags.domain.model.Areas" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/about"
+        android:name="com.egoriku.belarusresistanceflag.about.AboutFragment"
+        android:label="AboutFragment" />
+
+</navigation>
