@@ -1,7 +1,7 @@
 package com.egoriku.belarusresistanceflag.koin
 
-import com.egoriku.belarusresistanceflag.MainActivity
-import com.egoriku.belarusresistanceflag.MainViewModel
+import com.egoriku.belarusresistanceflag.activity.MainActivity
+import com.egoriku.belarusresistanceflag.activity.MainViewModel
 import com.egoriku.belarusresistanceflag.flags.data.retrofit.ApiService
 import com.egoriku.belarusresistanceflag.flags.domain.usecase.FlagsUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel

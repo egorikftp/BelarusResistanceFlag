@@ -1,9 +1,10 @@
-package com.egoriku.belarusresistanceflag
+package com.egoriku.belarusresistanceflag.activity
 
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.databinding.ActivityMainBinding
 import org.koin.androidx.scope.ScopeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

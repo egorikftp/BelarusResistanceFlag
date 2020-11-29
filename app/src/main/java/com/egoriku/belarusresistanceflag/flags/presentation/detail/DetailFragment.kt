@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import com.egoriku.belarusresistanceflag.MainViewModel
+import com.egoriku.belarusresistanceflag.activity.MainViewModel
 import com.egoriku.belarusresistanceflag.common.extraNotNull
 import com.egoriku.belarusresistanceflag.flags.domain.model.Areas
 import com.egoriku.belarusresistanceflag.flags.presentation.detail.ui.GridView
