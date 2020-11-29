@@ -14,7 +14,7 @@ inline fun <reified T : Any> Fragment.extraNotNull(key: String, default: T? = nu
 fun Fragment.browseUrl(url: String, newTask: Boolean = false): Boolean =
     requireContext().browseUrl(url, newTask)
 
-fun Context.browseUrl(url: String, newTask: Boolean = false): Boolean = try {
+private fun Context.browseUrl(url: String, newTask: Boolean = false): Boolean = try {
     startActivity(Intent(Intent.ACTION_VIEW).apply {
         data = Uri.parse(url)
 
