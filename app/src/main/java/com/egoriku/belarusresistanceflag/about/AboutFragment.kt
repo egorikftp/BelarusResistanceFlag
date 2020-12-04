@@ -17,9 +17,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.ui.tooling.preview.Preview
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.common.browseUrl
 import com.google.android.material.composethemeadapter.MdcTheme
@@ -86,7 +86,7 @@ class AboutFragment : Fragment() {
                     .clickable(onClick = { click(projectUrl) })
             ) {
                 Image(
-                    asset = imageResource(id = R.drawable.ic_dze_chat),
+                    bitmap = imageResource(id = R.drawable.ic_dze_chat),
                     modifier = Modifier.size(50.dp)
                 )
                 Text(

@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.egoriku.belarusresistanceflag.flags.domain.model.Areas
 import com.egoriku.belarusresistanceflag.flags.domain.model.FlagModel
 import com.google.android.material.composethemeadapter.MdcTheme

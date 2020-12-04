@@ -7,16 +7,16 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.flags.domain.model.FlagModel
 import com.google.android.material.composethemeadapter.MdcTheme
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun GridPreview() {
     MdcTheme {
         val items = listOf(
             FlagModel("Title", "", ""),
@@ -36,7 +36,7 @@ fun DefaultPreview() {
                 horizontalItemPadding = 2.dp
             ) {
                 Image(
-                    asset = vectorResource(id = R.drawable.ic_launcher_foreground),
+                    imageVector = vectorResource(id = R.drawable.ic_launcher_foreground),
                     modifier = Modifier.fillMaxWidth()
                 )
             }
