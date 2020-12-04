@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.egoriku.belarusresistanceflag.BuildConfig
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.common.browseUrl
 import com.google.android.material.composethemeadapter.MdcTheme
@@ -60,7 +61,7 @@ class AboutFragment : Fragment() {
             Column(modifier = Modifier.padding(16.dp)) {
                 SectionSource(click = onUrlClick)
                 SectionAddNew(
-                    modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
+                    modifier = Modifier.padding(top = 16.dp, bottom = 32.dp),
                     click = onUrlClick
                 )
                 SectionGithub(click = onUrlClick)
@@ -99,34 +100,10 @@ class AboutFragment : Fragment() {
     }
 
     @Composable
-    fun SectionGithub(click: (String) -> Unit) {
+    fun SectionAddNew(modifier: Modifier = Modifier, click: (String) -> Unit) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        ) {
-            Text(text = "Open source code", fontWeight = FontWeight.Bold)
-
-            val githubUrl = "https://github.com/egorikftp/BelarusResistanceFlag"
-            Text(
-                text = githubUrl,
-                textDecoration = TextDecoration.Underline,
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .clickable(onClick = { click(githubUrl) })
-            )
-        }
-    }
-
-    @Composable
-    fun SectionAddNew(modifier: Modifier, click: (String) -> Unit) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-
+            modifier = modifier.fillMaxWidth()
         ) {
             val addNewFlagUrl = "https://t.me/dzechat_bot"
 
@@ -135,6 +112,34 @@ class AboutFragment : Fragment() {
                     text = "Дадаць новы сцяг",
                     color = MaterialTheme.colors.error,
                     modifier = Modifier.padding(start = 8.dp, end = 8.dp)
+                )
+            }
+        }
+    }
+
+    @Composable
+    fun SectionGithub(click: (String) -> Unit) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text(text = "Зыходны код:", fontWeight = FontWeight.Bold)
+            val githubUrl = "https://github.com/egorikftp/BelarusResistanceFlag"
+            Text(
+                text = githubUrl,
+                textDecoration = TextDecoration.Underline,
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .clickable(onClick = { click(githubUrl) })
+            )
+            Row(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)) {
+                Text(
+                    fontWeight = FontWeight.Bold,
+                    text = "Версія праграмы:"
+                )
+                Text(
+                    modifier = Modifier.padding(start = 4.dp),
+                    text = BuildConfig.VERSION_NAME
                 )
             }
         }

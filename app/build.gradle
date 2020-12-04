@@ -4,6 +4,13 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
+def versionProp = loadProperties('version.properties')
+def version = versionProp['VERSION'] as int
+def sub_version = versionProp['SUB_VERSION'] as int
+def build_version = versionProp['BUILD_VERSION'] as int
+def verCode = version * 100000 + sub_version * 1000 + build_version
+def verName = "$version.$sub_version.$build_version"
+
 android {
     compileSdkVersion 30
 
@@ -11,13 +18,26 @@ android {
         applicationId "com.egoriku.belarusresistanceflag"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0.1"
+        versionCode verCode
+        versionName verName
+    }
+
+    signingConfigs {
+        release {
+            storeFile = file("keystore.jks")
+            storePassword = System.getenv("KEY_STORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
+            shrinkResources true
+            debuggable false
+            multiDexEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -38,6 +58,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion kotlin_version
+    }
+    gradle.taskGraph.whenReady { taskGraph ->
+        if (taskGraph.hasTask(assembleDebug) || taskGraph.hasTask(assembleRelease)) {
+            autoIncrementBuildVersionNumber()
+        }
     }
 }
 
@@ -73,10 +98,28 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
 
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.3.3.1"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.0"
 
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
 
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'
+}
+
+Properties loadProperties(String path) {
+    def file = file(path)
+    if (file.canRead() && file.canWrite()) {
+        Properties properties = new Properties()
+        properties.load(new FileInputStream(file))
+        return properties
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+}
+
+def autoIncrementBuildVersionNumber() {
+    def prop = loadProperties('version.properties')
+    def newVersion = (prop['BUILD_VERSION'] as int) + 1
+    prop['BUILD_VERSION'] = newVersion as String
+    prop.store(file('version.properties').newWriter(), null)
 }
