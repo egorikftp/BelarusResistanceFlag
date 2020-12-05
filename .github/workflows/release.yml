@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-      
       - name: Checkout
         uses: actions/checkout@v2
         
@@ -32,6 +28,10 @@ jobs:
         with:
            fileName: 'app/keystore.jks'
            encodedString: ${{ secrets.KEY_STORE }}
+      
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       
       - name: "Check keystore existence"
         uses: andstor/file-existence-action@v1
