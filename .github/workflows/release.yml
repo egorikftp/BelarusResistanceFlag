@@ -24,10 +24,14 @@ jobs:
       
       - name: Copy key
         run: echo ${{ secrets.KEY_STORE }} | base64 --decode > app/keystore.jks
+        env: 
+            KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+            KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+            KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }} 
       
       - name: Build Release AAB
         id: buildRelease
-        run: ./gradlew clean bundleRelease --scan
+        run: ./gradlew clean bundleRelease
       
       - name: Upload AAB
         id: uploadArtifact
