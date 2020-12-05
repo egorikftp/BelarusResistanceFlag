@@ -27,7 +27,7 @@ jobs:
       
       - name: Build Release AAB
         id: buildRelease
-        run: ./gradlew bundleRelease
+        run: ./gradlew clean bundleRelease --scan
       
       - name: Upload AAB
         id: uploadArtifact
