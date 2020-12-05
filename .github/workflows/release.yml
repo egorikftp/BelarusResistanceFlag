@@ -21,22 +21,20 @@ jobs:
       
       - name: Copy google-services.json
         run: echo ${{ secrets.GOOGLE_JSON }} | base64 --decode > app/google-services.json
-      
+  
       - name: Copy key
-        id: write_file
-        uses: timheuer/base64-to-file@v1
+        uses: RollyPeres/base64-to-path@v1
         with:
-           fileName: 'app/keystore.jks'
-           encodedString: ${{ secrets.KEY_STORE }}
-      
-      - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-      
+          filePath: ${{ github.workspace }}/app/keystore.jks
+          encodedString: ${{ secrets.KEY_STORE }}
+          
+      - name: Console
+        run: echo ${{ github.workspace }}
+            
       - name: "Check keystore existence"
         uses: andstor/file-existence-action@v1
         with:
-            files: "app/keystore.jks"      
+            files: "keystore.jks"      
       
       - name: Build Release AAB
         id: buildRelease
