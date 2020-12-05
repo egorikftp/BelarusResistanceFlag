@@ -23,11 +23,16 @@ jobs:
         run: echo ${{ secrets.GOOGLE_JSON }} | base64 --decode > app/google-services.json
       
       - name: Copy key
-        run: echo ${{ secrets.KEY_STORE }} | base64 --decode > app/keystore.jks
+        run: echo ${{ secrets.KEY_STORE }} | base64 -d > app/keystore.jks
         env: 
             KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
             KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
             KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }} 
+      
+      - name: "Check keystore existence"
+        uses: andstor/file-existence-action@v1
+        with:
+            files: "app/keystore.jks"      
       
       - name: Build Release AAB
         id: buildRelease
