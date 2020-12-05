@@ -22,19 +22,12 @@ jobs:
       - name: Copy google-services.json
         run: echo ${{ secrets.GOOGLE_JSON }} | base64 --decode > app/google-services.json
       
+      - name: Copy key
+        run: echo ${{ secrets.KEY_STORE }} | base64 --decode > app/keystore.jks
+      
       - name: Build Release AAB
         id: buildRelease
         run: ./gradlew bundleRelease
-    
-      - name: Sign AAB
-        id: sign
-        uses: r0adkll/sign-android-release@v1
-        with:
-            releaseDirectory: app/build/outputs/bundle/release
-            signingKeyBase64: ${{ secrets.KEY_STORE }}
-            alias: ${{ secrets.KEY_ALIAS }}
-            keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-            keyPassword: ${{ secrets.KEY_PASSWORD }}
       
       - name: Upload AAB
         id: uploadArtifact
