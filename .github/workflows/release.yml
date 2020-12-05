@@ -29,12 +29,12 @@ jobs:
           encodedString: ${{ secrets.KEY_STORE }}
           
       - name: Console
-        run: echo ${{ github.workspace }}
+        run: echo ${{ github.workspace }}/app/keystore.jks
             
       - name: "Check keystore existence"
         uses: andstor/file-existence-action@v1
         with:
-            files: "keystore.jks"      
+            files: "app/keystore.jks"      
       
       - name: Build Release AAB
         id: buildRelease
