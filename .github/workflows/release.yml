@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS }
-      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }
-      KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
 
     steps:
       - name: Checkout
