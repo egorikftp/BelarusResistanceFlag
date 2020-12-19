@@ -16,7 +16,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun FlagItem(model: FlagModel) {
-    Card(elevation = 4.dp) {
+    Card(elevation = 4.dp, modifier = Modifier.padding(4.dp)) {
         Column(
             modifier = Modifier
                 .clickable(onClick = {})
