@@ -4,26 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.egoriku.belarusresistanceflag.BuildConfig
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.common.browseUrl
+import com.egoriku.belarusresistanceflag.common.ui.Badge
+import com.egoriku.belarusresistanceflag.common.ui.Badge2
 import com.google.android.material.composethemeadapter.MdcTheme
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 class AboutFragment : Fragment() {
 
@@ -76,26 +77,13 @@ class AboutFragment : Fragment() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            val projectUrl = "https://dze.chat/"
-
             Text(text = "Дадзеныя ўзятыя з праекта")
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .clip(CircleShape)
-                    .clickable(onClick = { click(projectUrl) })
-            ) {
-                Image(
-                    bitmap = imageResource(id = R.drawable.ic_dze_chat),
-                    modifier = Modifier.size(50.dp)
-                )
-                Text(
-                    modifier = Modifier.padding(end = 8.dp),
-                    text = "dze.chat",
-                    fontWeight = FontWeight.Bold
-                )
-            }
+
+            Badge(
+                click = { click("https://dze.chat/") },
+                title = "dze.chat",
+                imageResId = R.drawable.ic_dze_chat
+            )
         }
     }
 
@@ -103,7 +91,8 @@ class AboutFragment : Fragment() {
     fun SectionAddNew(modifier: Modifier = Modifier, click: (String) -> Unit) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center
         ) {
             val addNewFlagUrl = "https://t.me/dzechat_bot"
 
@@ -120,19 +109,23 @@ class AboutFragment : Fragment() {
     @Composable
     fun SectionGithub(click: (String) -> Unit) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Зыходны код:", fontWeight = FontWeight.Bold)
-            val githubUrl = "https://github.com/egorikftp/BelarusResistanceFlag"
-            Text(
-                text = githubUrl,
-                textDecoration = TextDecoration.Underline,
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .clickable(onClick = { click(githubUrl) })
-            )
-            Row(modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Зыходны код:", fontWeight = FontWeight.Bold)
+                Badge2(
+                    click = { click("https://github.com/egorikftp/BelarusResistanceFlag") },
+                    vectorImageResId = R.drawable.ic_github,
+                    title = "Follow Github"
+                )
+            }
+
+            Row {
                 Text(
                     fontWeight = FontWeight.Bold,
                     text = "Версія праграмы:"
@@ -142,6 +135,16 @@ class AboutFragment : Fragment() {
                     text = BuildConfig.VERSION_NAME
                 )
             }
+
+            CoilImage(
+                data = R.drawable.ic_logo,
+                modifier = Modifier
+                    .padding(32.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .size(150.dp)
+                    .shadow(3.dp, shape = CircleShape)
+                    .background(color = Color.White, shape = CircleShape)
+            )
         }
     }
 

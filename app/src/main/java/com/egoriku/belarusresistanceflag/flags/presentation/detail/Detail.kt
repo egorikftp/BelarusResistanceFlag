@@ -22,6 +22,7 @@ fun FlagItem(model: FlagModel) {
                 .clickable(onClick = {})
         ) {
             CoilImage(
+                fadeIn = true,
                 data = model.thumbnailUrl,
                 modifier = Modifier
                     .aspectRatio(1.6f)
