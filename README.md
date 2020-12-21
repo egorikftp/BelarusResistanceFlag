@@ -37,11 +37,19 @@ App screenshots
 
 <img alt="Icon" src="assets/Screenshot_1.png" width="300" /> <img alt="Icon" src="assets/Screenshot_2.png" width="300" /> <img alt="Icon" src="assets/Screenshot_3.png" width="300" />
 
+TODO
+_______
+
+1. Full screen flag view
+2. Add separate icon for debug mode
+3. Add ability to change app icon for safety
+4. Add ability to download flags
+5. Make Dze chat icon vector
 
 License
 -------
 
-     Copyright 2020 Yahor Urbanovich
+     Copyright 2020
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Белорусский музей флагов</string>
+    <string name="navigation_menu_flags">Флаги</string>
+    <string name="navigation_menu_about">О программе</string>
+    <string name="header_categories_screen">Музей флагов</string>
+    <string name="header_about_screen">Про нас</string>
+    <string name="about_screen_add_new_flag">Добавить новый флаг</string>
+    <string name="about_screen_source_code">Исходный код</string>
+    <string name="about_screen_app_version">Версия приложения:</string>
+    <string name="about_screen_data_source">Данные взяты с проекта</string>
+    <string name="categories_loading_error">Произошла ошибка при загрузке</string>
+    <string name="about_screen_github_label">Мы на Github</string>
+</resources>

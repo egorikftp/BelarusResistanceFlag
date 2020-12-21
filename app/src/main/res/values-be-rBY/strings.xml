@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Беларускі музей сцягоў</string>
+    <string name="navigation_menu_flags">Cцягі</string>
+    <string name="navigation_menu_about">Аб праграме</string>
+    <string name="header_categories_screen">Музей сцягоў</string>
+    <string name="header_about_screen">Пра нас</string>
+    <string name="about_screen_add_new_flag">Дадаць новы сцяг</string>
+    <string name="about_screen_source_code">Зыходны код:</string>
+    <string name="about_screen_app_version">Версія праграмы:</string>
+    <string name="about_screen_data_source">Дадзеныя ўзятыя з праекта</string>
+    <string name="categories_loading_error">Адбылася памылка падчас загрузкі</string>
+    <string name="about_screen_github_label">Мы на Github</string>
+</resources>

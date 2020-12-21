@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Theme.BelarusResistanceFlag.Home" parent="Theme.BelarusResistanceFlag.Immerse">
-        <item name="android:windowLightStatusBar">@bool/use_light_status_bar</item>
-    </style>
-</resources>
