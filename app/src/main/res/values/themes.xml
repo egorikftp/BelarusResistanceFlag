@@ -6,7 +6,7 @@
         <item name="android:colorAccent">#FF272D33</item>
         <item name="android:statusBarColor">@color/immersive_sys_ui</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
-        <item name="android:windowBackground">@color/immersive_sys_ui</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
     </style>
 
     <style name="Theme.Material.DayNight.NoActionBar" parent="@android:style/Theme.Material.Light.NoActionBar" />

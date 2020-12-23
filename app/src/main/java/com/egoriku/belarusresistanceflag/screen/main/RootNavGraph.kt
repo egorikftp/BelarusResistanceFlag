@@ -7,8 +7,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import com.egoriku.belarusresistanceflag.activity.FlagsViewModel
 import com.egoriku.belarusresistanceflag.activity.RootScreen
-import com.egoriku.belarusresistanceflag.domain.model.Areas
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.ext.extraNotNull
+import com.egoriku.belarusresistanceflag.screen.DetailScreen
 import com.egoriku.belarusresistanceflag.screen.flags.FlagsScreen
 
 @Composable
@@ -34,14 +35,26 @@ fun RootNavGraph(
         composable(
             route = RootScreen.FlagDetails.route,
             arguments = listOf(navArgument("areaId") {
-                type = NavType.EnumType(Areas::class.java)
+                type = NavType.EnumType(FlagArea::class.java)
             })
         ) { navBackStackEntry ->
-            val area = navBackStackEntry.extraNotNull<Areas>("areaId")
+            val area = navBackStackEntry.extraNotNull<FlagArea>("areaId")
 
             FlagsScreen(
                 title = area.title,
                 flags = viewModel.getByArea(area),
+                openDetails = actions.openFlagDetail,
+                upPressed = actions.upPress
+            )
+        }
+        composable(
+            route = RootScreen.FullSizeFlag.route,
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            val id = navBackStackEntry.extraNotNull<Int>("id")
+
+            DetailScreen(
+                flagModel = viewModel.getFlagId(id),
                 upPressed = actions.upPress
             )
         }
@@ -50,9 +63,15 @@ fun RootNavGraph(
 
 class MainActions(navController: NavHostController) {
 
-    val selectFlagsArea: (Areas) -> Unit = { area: Areas ->
+    val selectFlagsArea: (FlagArea) -> Unit = { area ->
         navController.navigate(
             RootScreen.FlagDetails.route.replace("{areaId}", area.name)
+        )
+    }
+
+    val openFlagDetail: (Int) -> Unit = { id ->
+        navController.navigate(
+            RootScreen.FullSizeFlag.route.replace("{id}", id.toString())
         )
     }
 

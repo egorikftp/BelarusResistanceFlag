@@ -15,14 +15,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.egoriku.belarusresistanceflag.domain.model.Areas
-import com.egoriku.belarusresistanceflag.domain.model.FlagModel
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.theme.FlagsTheme
 
 @Composable
-fun Categories(state: Map<Areas, List<FlagModel>>, onClick: (Areas) -> Unit) {
+fun Categories(state: List<FlagArea>, onClick: (FlagArea) -> Unit) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        state.forEach { (area, _) ->
+        state.forEach { area ->
             item {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -49,16 +48,16 @@ fun Categories(state: Map<Areas, List<FlagModel>>, onClick: (Areas) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun CategoriesPreview() {
-    val categories = mapOf<Areas, List<FlagModel>>(
-        Areas.Minsk to emptyList(),
-        Areas.Brest to emptyList(),
-        Areas.Vitebsk to emptyList(),
-        Areas.Gomel to emptyList(),
-        Areas.Grodno to emptyList(),
-        Areas.Mogilev to emptyList(),
-        Areas.Region to emptyList(),
-        Areas.Diaspora to emptyList(),
-        Areas.Other to emptyList()
+    val categories = listOf(
+        FlagArea.Minsk,
+        FlagArea.Brest,
+        FlagArea.Vitebsk,
+        FlagArea.Gomel,
+        FlagArea.Grodno,
+        FlagArea.Mogilev,
+        FlagArea.Region,
+        FlagArea.Diaspora,
+        FlagArea.Other
     )
 
     FlagsTheme {

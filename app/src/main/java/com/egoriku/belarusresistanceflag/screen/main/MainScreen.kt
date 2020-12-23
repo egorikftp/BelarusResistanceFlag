@@ -13,7 +13,7 @@ import androidx.navigation.compose.*
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.activity.BottomNavScreen
 import com.egoriku.belarusresistanceflag.activity.FlagsViewModel
-import com.egoriku.belarusresistanceflag.domain.model.Areas
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.ext.EMPTY
 import com.egoriku.belarusresistanceflag.screen.about.AboutScreen
 import com.egoriku.belarusresistanceflag.screen.categories.CategoriesScreen
@@ -22,7 +22,7 @@ import com.egoriku.belarusresistanceflag.screen.categories.CategoriesScreen
 fun MainScreen(
     viewModel: FlagsViewModel,
     onUrlClick: (String) -> Unit,
-    selectArea: (Areas) -> Unit
+    selectArea: (FlagArea) -> Unit
 ) {
     val navigationItems = listOf(BottomNavScreen.Categories, BottomNavScreen.About)
     val navController = rememberNavController()
@@ -74,7 +74,7 @@ fun MainScreen(
     ) { innerPadding ->
         NavHost(navController, startDestination = BottomNavScreen.Categories.route) {
             composable(BottomNavScreen.Categories.route) {
-                val categoriesState by viewModel.flow.collectAsState()
+                val categoriesState by viewModel.categoriesFlow.collectAsState()
 
                 CategoriesScreen(
                     categoriesState = categoriesState,

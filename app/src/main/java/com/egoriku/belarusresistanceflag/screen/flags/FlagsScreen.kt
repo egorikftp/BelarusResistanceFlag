@@ -18,9 +18,12 @@ import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 fun FlagsScreen(
     title: String,
     flags: List<FlagModel>,
+    openDetails: (Int) -> Unit,
     upPressed: () -> Unit
 ) {
-    Surface {
+    Surface(
+        modifier = Modifier.fillMaxSize()
+    ) {
         Column {
             TopAppBar {
                 Row(
@@ -47,7 +50,7 @@ fun FlagsScreen(
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(flags) {
-                    FlagItem(it)
+                    FlagItem(model = it, openDetails = openDetails)
                 }
             }
         }

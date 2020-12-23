@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -11,11 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.activity.CategoriesState
-import com.egoriku.belarusresistanceflag.domain.model.Areas
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 
 @Composable
 fun CategoriesScreen(
-    selectArea: (Areas) -> Unit,
+    selectArea: (FlagArea) -> Unit,
     categoriesState: CategoriesState,
     modifier: Modifier = Modifier
 ) {
@@ -25,11 +26,11 @@ fun CategoriesScreen(
         modifier = modifier.fillMaxSize()
     ) {
         when (categoriesState) {
-            is CategoriesState.Loading -> CircularProgressIndicator()
+            is CategoriesState.Loading -> CircularProgressIndicator(color = MaterialTheme.colors.error)
             is CategoriesState.Success -> {
                 Categories(
                     state = categoriesState.categories,
-                    onClick = { selectArea(it) }
+                    onClick = selectArea
                 )
             }
             is CategoriesState.Error -> {

@@ -1,6 +1,6 @@
 package com.egoriku.belarusresistanceflag.domain.model
 
-enum class Areas(val title: String) {
+enum class FlagArea(val title: String) {
     Minsk("Мінск"),
     Brest("Брэст"),
     Vitebsk("Віцебск"),

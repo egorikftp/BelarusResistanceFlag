@@ -13,6 +13,10 @@ sealed class RootScreen(val route: String) {
     object MainScreen : RootScreen(
         route = "main"
     )
+
+    object FullSizeFlag : RootScreen(
+        route = "fullSizeFlag/{id}",
+    )
 }
 
 sealed class BottomNavScreen(

@@ -28,6 +28,13 @@ private val darkColors = darkColors(
 )
 
 @Composable
+fun DetailsTheme(
+    content: @Composable () -> Unit
+) {
+    MaterialTheme(colors = darkColors, content = content)
+}
+
+@Composable
 fun FlagsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit

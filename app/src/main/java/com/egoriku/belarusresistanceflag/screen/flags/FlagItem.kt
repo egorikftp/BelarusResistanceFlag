@@ -11,16 +11,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 import com.egoriku.belarusresistanceflag.ext.EMPTY
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun FlagItem(model: FlagModel) {
+fun FlagItem(
+    model: FlagModel,
+    openDetails: (Int) -> Unit
+) {
     Card(elevation = 4.dp, modifier = Modifier.padding(4.dp)) {
         Column(
             modifier = Modifier
-                .clickable(onClick = {})
+                .clickable(onClick = { openDetails(model.id) })
         ) {
             CoilImage(
                 fadeIn = true,
@@ -51,9 +55,10 @@ fun FlagItem(model: FlagModel) {
 fun FlagItemPreview() {
     FlagItem(
         model = FlagModel(
+            area = FlagArea.Other,
             title = "Item Title",
             thumbnailUrl = EMPTY,
             imageUrl = EMPTY
         )
-    )
+    ) {}
 }

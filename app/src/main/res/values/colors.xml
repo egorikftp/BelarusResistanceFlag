@@ -4,4 +4,6 @@
 
     <color name="immersive_sys_ui">#FF272D33</color>
     <color name="nav_bar">@color/immersive_sys_ui</color>
+
+    <color name="windowBackground">#FFFFFF</color>
 </resources>

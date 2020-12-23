@@ -1,14 +1,13 @@
 package com.egoriku.belarusresistanceflag.activity
 
-import com.egoriku.belarusresistanceflag.domain.model.Areas
-import com.egoriku.belarusresistanceflag.domain.model.FlagModel
+import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 
 sealed class CategoriesState {
 
     object Loading : CategoriesState()
 
     data class Success(
-        val categories: Map<Areas, List<FlagModel>>
+        val categories: List<FlagArea>,
     ) : CategoriesState()
 
     object Error : CategoriesState()
