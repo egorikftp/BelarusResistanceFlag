@@ -23,8 +23,9 @@ class FlagsViewModel(
         fetchFlags()
     }
 
-    fun getByArea(area: FlagArea): List<FlagModel> = _flagState.value
-        .filter { it.area == area }
+    fun getByArea(area: FlagArea): List<FlagModel> =
+        _flagState.value
+            .filter { it.area == area }
 
     fun getFlagId(id: Int): FlagModel =
         _flagState.value
