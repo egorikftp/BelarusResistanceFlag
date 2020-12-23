@@ -40,11 +40,10 @@ App screenshots
 TODO
 _______
 
-1. Full screen flag view
-2. Add separate icon for debug mode
-3. Add ability to change app icon for safety
-4. Add ability to download flags
-5. Make Dze chat icon vector
+1. Add separate icon for debug mode
+2. Add ability to change app icon for safety
+3. Add ability to download flags
+4. Make Dze chat icon vector
 
 License
 -------
