@@ -7,6 +7,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,20 +26,24 @@ jobs:
       
       - name: Copy google-services.json
         run: echo ${{ secrets.GOOGLE_JSON }} | base64 --decode > app/google-services.json
+  
+      - name: Copy key
+        uses: RollyPeres/base64-to-path@v1
+        with:
+          filePath: ${{ github.workspace }}/app/keystore.jks
+          encodedString: ${{ secrets.KEY_STORE }}
+          
+      - name: Console
+        run: echo ${{ github.workspace }}/app/keystore.jks
+            
+      - name: "Check keystore existence"
+        uses: andstor/file-existence-action@v1
+        with:
+            files: "app/keystore.jks"      
       
       - name: Build Release AAB
         id: buildRelease
-        run: ./gradlew bundleRelease
-    
-      - name: Sign AAB
-        id: sign
-        uses: r0adkll/sign-android-release@v1
-        with:
-            releaseDirectory: app/build/outputs/bundle/release
-            signingKeyBase64: ${{ secrets.KEY_STORE }}
-            alias: ${{ secrets.KEY_ALIAS }}
-            keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-            keyPassword: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew clean bundleRelease
       
       - name: Upload AAB
         id: uploadArtifact
@@ -53,6 +62,6 @@ jobs:
         with:
             serviceAccountJson: service_account.json
             packageName: com.egoriku.belarusresistanceflag
-            releaseFile: app/build/outputs/bundle/release/app-release.aab
+            releaseFiles: app/build/outputs/bundle/release/app-release.aab
             track: beta
-            whatsNewDirectory: whatsnew/
+            mappingFile: app/build/outputs/mapping/release/mapping.txt
