@@ -8,11 +8,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.gesture.DragObserver
+import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.gesture.rawDragGestureFilter
 
-enum class ZoomState {
+enum class ZoomCallbackState {
     IN_PROGRESS,
     STOPPED
+}
+
+enum class ZoomState {
+    DEFAULT,
+    ZOOMED
 }
 
 @Composable
@@ -20,7 +26,8 @@ fun Zoomable(
     modifier: Modifier = Modifier,
     itemContent: @Composable (scale: Float, translate: Offset) -> Unit
 ) {
-    var zoomState by remember { mutableStateOf(ZoomState.STOPPED) }
+    var zoomCallbackState by remember { mutableStateOf(ZoomCallbackState.STOPPED) }
+    var zoomState by remember { mutableStateOf(ZoomState.DEFAULT) }
     var scale by remember { mutableStateOf(1f) }
     var translate by remember { mutableStateOf(Offset(0f, 0f)) }
 
@@ -28,10 +35,23 @@ fun Zoomable(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
+            .doubleTapGestureFilter {
+                when (zoomState) {
+                    ZoomState.DEFAULT -> {
+                        zoomState = ZoomState.ZOOMED
+                        scale = 3f
+                    }
+                    else -> {
+                        zoomState = ZoomState.DEFAULT
+                        scale = 1f
+                        translate = Offset(0f, 0f)
+                    }
+                }
+            }
             .zoomable(
                 onZoomDelta = { scale *= it },
                 onZoomStarted = {
-                    zoomState = ZoomState.IN_PROGRESS
+                    zoomCallbackState = ZoomCallbackState.IN_PROGRESS
                 },
                 onZoomStopped = {
                     if (scale < 1f) {
@@ -43,11 +63,15 @@ fun Zoomable(
                         scale = 3.5f
                     }
 
-                    zoomState = ZoomState.STOPPED
+                    zoomState = when (scale) {
+                        1f -> ZoomState.DEFAULT
+                        else -> ZoomState.ZOOMED
+                    }
+                    zoomCallbackState = ZoomCallbackState.STOPPED
                 }
             )
             .rawDragGestureFilter(
-                canStartDragging = { zoomState == ZoomState.IN_PROGRESS || scale > 1f },
+                canStartDragging = { zoomCallbackState == ZoomCallbackState.IN_PROGRESS || scale > 1f },
                 dragObserver = object : DragObserver {
                     override fun onDrag(dragDistance: Offset): Offset {
                         translate = translate.plus(dragDistance)
