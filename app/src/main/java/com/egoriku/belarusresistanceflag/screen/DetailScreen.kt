@@ -7,7 +7,9 @@ import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import com.egoriku.belarusresistanceflag.common.ui.Zoomable
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 import com.egoriku.belarusresistanceflag.theme.DetailsTheme
 import dev.chrisbanes.accompanist.coil.CoilImage
@@ -44,20 +46,30 @@ fun DetailScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxSize()
             ) {
-                CoilImage(
-                    loading = {
-                        Box(modifier = Modifier.fillMaxHeight()) {
-                            CircularProgressIndicator(
-                                color = MaterialTheme.colors.error,
-                                modifier = Modifier.align(Alignment.Center)
+                Zoomable(
+                    modifier = Modifier.fillMaxSize()
+                ) { scale, translate ->
+                    CoilImage(
+                        loading = {
+                            Box(modifier = Modifier.fillMaxHeight()) {
+                                CircularProgressIndicator(
+                                    color = MaterialTheme.colors.error,
+                                    modifier = Modifier.align(Alignment.Center)
+                                )
+                            }
+                        },
+                        data = flagModel.imageUrl,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentHeight()
+                            .graphicsLayer(
+                                scaleX = scale,
+                                scaleY = scale,
+                                translationY = translate.y,
+                                translationX = translate.x
                             )
-                        }
-                    },
-                    data = flagModel.imageUrl,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight()
-                )
+                    )
+                }
             }
         }
     }
