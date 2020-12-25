@@ -2,9 +2,11 @@ package com.egoriku.belarusresistanceflag.screen.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
 import com.egoriku.belarusresistanceflag.activity.FlagsViewModel
 import com.egoriku.belarusresistanceflag.activity.RootScreen
 import com.egoriku.belarusresistanceflag.domain.model.FlagArea
@@ -19,7 +21,7 @@ fun RootNavGraph(
     startDestination: String = RootScreen.MainScreen.route
 ) {
     val navController = rememberNavController()
-    val actions = remember(navController) { MainActions(navController) }
+    val actions = remember(navController) { NavigationActions(navController) }
 
     NavHost(
         navController = navController,
@@ -58,24 +60,5 @@ fun RootNavGraph(
                 upPressed = actions.upPress
             )
         }
-    }
-}
-
-class MainActions(navController: NavHostController) {
-
-    val selectFlagsArea: (FlagArea) -> Unit = { area ->
-        navController.navigate(
-            RootScreen.FlagDetails.route.replace("{areaId}", area.name)
-        )
-    }
-
-    val openFlagDetail: (Int) -> Unit = { id ->
-        navController.navigate(
-            RootScreen.FullSizeFlag.route.replace("{id}", id.toString())
-        )
-    }
-
-    val upPress: () -> Unit = {
-        navController.navigateUp()
     }
 }
