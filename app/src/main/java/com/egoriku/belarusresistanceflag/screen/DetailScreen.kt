@@ -37,12 +37,12 @@ fun DetailScreen(
                 ZoomableImage(flagModel = flagModel)
 
                 TopAppBar(flagModel = flagModel, upPressed = upPressed)
-                BottomActions(
+                /*BottomActions(
                     flagModel = flagModel,
                     modifier = Modifier.align(Alignment.BottomCenter),
                     onDownloadClick = {},
                     onShareClick = {}
-                )
+                )*/
             }
         }
     }
