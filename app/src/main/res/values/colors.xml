@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="slate_200">#81A9B3</color>
-    <color name="slate_600">#4A6572</color>
-    <color name="slate_700">#344955</color>
-    <color name="slate_800">#232F34</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 
-    <color name="slate_200_10pc_over_surface">#16191A</color>
+    <color name="immersive_sys_ui">#33272D33</color>
+    <color name="nav_bar">@color/immersive_sys_ui</color>
 
-    <color name="mtrl_orange_500">#f9aa33</color>
-    <color name="mtrl_orange_700">#C78522</color>
-
-    <color name="launcher_icon_background">#333333</color>
-
-    <color name="swipe_away_background">#DEDEDE</color>
-
-    <color name="system_ui_scrim_light">#B3FFFFFF</color> <!-- 70% white -->
-    <color name="system_ui_scrim_dark">#30000000</color> <!-- 19% black -->
+    <color name="windowBackground">#FFFFFF</color>
 </resources>

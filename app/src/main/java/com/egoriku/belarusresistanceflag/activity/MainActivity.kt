@@ -1,30 +1,32 @@
 package com.egoriku.belarusresistanceflag.activity
 
 import android.os.Bundle
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
-import com.egoriku.belarusresistanceflag.R
-import com.egoriku.belarusresistanceflag.databinding.ActivityMainBinding
-import org.koin.androidx.scope.ScopeActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.activity.ComponentActivity
+import androidx.compose.ui.platform.setContent
+import androidx.core.view.WindowCompat
+import com.egoriku.belarusresistanceflag.ext.browseUrl
+import com.egoriku.belarusresistanceflag.screen.main.RootNavGraph
+import com.egoriku.belarusresistanceflag.theme.FlagsTheme
+import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MainActivity : ScopeActivity(R.layout.activity_main) {
-
-    private val viewModel: MainViewModel by viewModel()
-
-    private val binding by viewBinding(ActivityMainBinding::bind, R.id.home_root)
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            viewModel.fetchFlags()
-        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        binding.homeBottomNavigation
-            .setupWithNavController(
-                (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
-            )
+        val viewModel = getViewModel<FlagsViewModel>()
+        setContent {
+            FlagsTheme {
+                ProvideWindowInsets {
+                    RootNavGraph(
+                        viewModel = viewModel,
+                        onUrlClick = { browseUrl(it) }
+                    )
+                }
+            }
+        }
     }
 }

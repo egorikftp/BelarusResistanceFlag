@@ -1,14 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.BelarusResistanceFlag" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorSurface">@color/slate_200_10pc_over_surface</item>
-        <item name="colorOnSurface">#FFFFFF</item>
-
-        <item name="colorPrimary">@color/slate_200</item>
-        <item name="colorOnPrimary">#000000</item>
-
-        <item name="colorSecondary">@color/mtrl_orange_500</item>
-        <item name="colorSecondaryVariant">@color/mtrl_orange_700</item>
-        <item name="colorOnSecondary">#000000</item>
-    </style>
+    <style name="Theme.Material.DayNight.NoActionBar" parent="@android:style/Theme.Material.NoActionBar" />
 </resources>
