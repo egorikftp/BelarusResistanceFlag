@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
+import dev.chrisbanes.accompanist.insets.navigationBarsHeight
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -22,7 +24,9 @@ fun FlagsScreen(
     upPressed: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
     ) {
         Column {
             TopAppBar {
@@ -51,6 +55,9 @@ fun FlagsScreen(
             ) {
                 items(flags) {
                     FlagItem(model = it, openDetails = openDetails)
+                }
+                item {
+                    Spacer(modifier = Modifier.navigationBarsHeight())
                 }
             }
         }

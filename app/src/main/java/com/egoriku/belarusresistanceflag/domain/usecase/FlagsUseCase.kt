@@ -2,6 +2,7 @@ package com.egoriku.belarusresistanceflag.domain.usecase
 
 import com.egoriku.belarusresistanceflag.data.entity.FlagEntity
 import com.egoriku.belarusresistanceflag.data.retrofit.ApiService
+import com.egoriku.belarusresistanceflag.domain.model.Download
 import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 import com.egoriku.belarusresistanceflag.domain.usecase.base.UseCase
@@ -16,7 +17,14 @@ class FlagsUseCase(
             area = area,
             title = entity.title,
             thumbnailUrl = entity.thumbnailUrl,
-            imageUrl = entity.imageUrl
+            imageUrl = entity.imageUrl,
+            download = when {
+                entity.downloadUrl.isNullOrEmpty() -> Download.NotAvailable
+                else -> Download.Available(
+                    downloadUrl = entity.downloadUrl,
+                    format = entity.downloadUrl.substring(entity.downloadUrl.lastIndexOf("."))
+                )
+            }
         )
     }
 

@@ -5,7 +5,7 @@
     <string name="header_categories_screen">Museum of Flags</string>
     <string name="header_about_screen">About us</string>
     <string name="about_screen_add_new_flag">Add new flag</string>
-    <string name="about_screen_source_code">Source code</string>
+    <string name="about_screen_source_code">Source code:</string>
     <string name="about_screen_app_version">App version:</string>
     <string name="about_screen_data_source">Data taken from the project</string>
     <string name="categories_loading_error">An error occurred while loading</string>
@@ -14,4 +14,6 @@
     <string name="data_source_link" translatable="false">https://dze.chat/</string>
     <string name="data_source_label" translatable="false">dze.chat</string>
     <string name="add_new_flag_link" translatable="false">https://t.me/dzechat_bot</string>
+    <string name="details_action_share">Share as photo</string>
+    <string name="details_action_download">Download as %1$s</string>
 </resources>

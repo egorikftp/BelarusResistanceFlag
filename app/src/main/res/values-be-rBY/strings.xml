@@ -11,4 +11,6 @@
     <string name="about_screen_data_source">Дадзеныя ўзятыя з праекта</string>
     <string name="categories_loading_error">Адбылася памылка падчас загрузкі</string>
     <string name="about_screen_github_label">Мы на Github</string>
+    <string name="details_action_share">Падзяліцца фота</string>
+    <string name="details_action_download">Скачать как %1$s</string>
 </resources>

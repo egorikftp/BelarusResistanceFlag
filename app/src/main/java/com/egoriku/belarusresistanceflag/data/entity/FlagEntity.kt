@@ -10,5 +10,8 @@ class FlagEntity(
     val thumbnailUrl: String,
 
     @SerializedName("imageUrl")
-    val imageUrl: String
+    val imageUrl: String,
+
+    @SerializedName("downloadUrl")
+    val downloadUrl: String?
 )

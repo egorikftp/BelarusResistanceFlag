@@ -7,7 +7,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.*
 import com.egoriku.belarusresistanceflag.R
@@ -17,6 +16,8 @@ import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.ext.EMPTY
 import com.egoriku.belarusresistanceflag.screen.about.AboutScreen
 import com.egoriku.belarusresistanceflag.screen.categories.CategoriesScreen
+import dev.chrisbanes.accompanist.insets.navigationBarsPadding
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun MainScreen(
@@ -29,6 +30,9 @@ fun MainScreen(
     val current: NavBackStackEntry? by navController.currentBackStackEntryAsState()
 
     Scaffold(
+        modifier = Modifier
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         topBar = {
             TopAppBar(
                 title = {
@@ -53,7 +57,7 @@ fun MainScreen(
                     BottomNavigationItem(
                         selectedContentColor = MaterialTheme.colors.error,
                         unselectedContentColor = MaterialTheme.colors.onSurface,
-                        icon = { Icon(vectorResource(id = screen.drawableResId)) },
+                        icon = { Icon(screen.imageVector) },
                         label = { Text(stringResource(screen.resourceId)) },
                         alwaysShowLabels = false,
                         selected = currentRoute == screen.route,
@@ -66,7 +70,7 @@ fun MainScreen(
                             if (currentRoute != screen.route) {
                                 navController.navigate(screen.route)
                             }
-                        },
+                        }
                     )
                 }
             }

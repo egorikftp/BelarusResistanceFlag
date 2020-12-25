@@ -2,7 +2,7 @@
 <resources>
     <color name="ic_launcher_background">#FFFFFF</color>
 
-    <color name="immersive_sys_ui">#FF272D33</color>
+    <color name="immersive_sys_ui">#33272D33</color>
     <color name="nav_bar">@color/immersive_sys_ui</color>
 
     <color name="windowBackground">#FFFFFF</color>
