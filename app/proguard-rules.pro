@@ -8,6 +8,6 @@
     **[] values();
 }
 
--keep class com.egoriku.belarusresistanceflag.flags.data** {
+-keep class com.egoriku.belarusresistanceflag.data.entity** {
     *;
 }

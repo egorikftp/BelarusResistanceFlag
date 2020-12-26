@@ -1,5 +1,6 @@
 package com.egoriku.belarusresistanceflag.activity
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.egoriku.belarusresistanceflag.domain.model.FlagArea
@@ -42,6 +43,7 @@ class FlagsViewModel(
                     _categoriesFlow.value = CategoriesState.Success(getAreas())
                 }
                 is ResultOf.Failure -> {
+                    Log.d("kek", resultOf.throwable.message.toString())
                     _categoriesFlow.value = CategoriesState.Error
                 }
             }
