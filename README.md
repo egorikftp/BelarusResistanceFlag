@@ -42,7 +42,7 @@ TODO
 
 1. Add ability to change app icon for safety
 2. Add ability to download flags
-2. Add ability to share flags as hq image
+3. Add ability to share flags as hq image
 
 License
 -------
