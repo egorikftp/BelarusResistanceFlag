@@ -16,7 +16,7 @@ fun AboutScreen(
     onUrlClick: (String) -> Unit
 ) {
     ScrollableColumn(modifier = modifier.padding(16.dp)) {
-        SectionSource(click = onUrlClick)
+        SectionSource(onClick = onUrlClick)
         SectionAddNew(
             modifier = Modifier.padding(top = 16.dp, bottom = 32.dp),
             onClick = onUrlClick

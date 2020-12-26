@@ -12,7 +12,7 @@ import com.egoriku.belarusresistanceflag.R
 import com.egoriku.belarusresistanceflag.common.ui.Badge
 
 @Composable
-fun SectionSource(click: (String) -> Unit) {
+fun SectionSource(onClick: (String) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -22,9 +22,9 @@ fun SectionSource(click: (String) -> Unit) {
 
         val link = stringResource(R.string.data_source_link)
         Badge(
-            click = { click(link) },
             title = stringResource(R.string.data_source_label),
-            imageResId = R.drawable.ic_dze_chat
+            vectorImageResId = R.drawable.ic_dze_chat,
+            onClick = { onClick(link) }
         )
     }
 }
