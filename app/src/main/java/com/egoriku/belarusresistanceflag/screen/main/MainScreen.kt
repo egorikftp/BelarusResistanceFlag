@@ -62,11 +62,6 @@ fun MainScreen(
                         alwaysShowLabels = false,
                         selected = currentRoute == screen.route,
                         onClick = {
-                            navController.popBackStack(
-                                navController.graph.startDestination,
-                                false
-                            )
-
                             if (currentRoute != screen.route) {
                                 navController.navigate(screen.route)
                             }

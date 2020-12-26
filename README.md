@@ -35,15 +35,14 @@ Built With 🛠
 App screenshots
 -------
 
-<img alt="Icon" src="assets/Screenshot_1.png" width="300" /> <img alt="Icon" src="assets/Screenshot_2.png" width="300" /> <img alt="Icon" src="assets/Screenshot_3.png" width="300" />
+<img alt="Icon" src="assets/Screenshot_1.png" width="300" /> <img alt="Icon" src="assets/Screenshot_2.png" width="300" /> <img alt="Icon" src="assets/Screenshot_3.png" width="300" /> <img alt="Icon" src="assets/Screenshot_4.png" width="300" />
 
 TODO
-_______
+-------
 
-1. Add separate icon for debug mode
-2. Add ability to change app icon for safety
-3. Add ability to download flags
-4. Make Dze chat icon vector
+1. Add ability to change app icon for safety
+2. Add ability to download flags
+3. Add ability to share flags as hq image
 
 License
 -------

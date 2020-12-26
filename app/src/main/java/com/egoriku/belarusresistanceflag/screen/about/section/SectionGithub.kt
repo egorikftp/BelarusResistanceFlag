@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.egoriku.belarusresistanceflag.BuildConfig
 import com.egoriku.belarusresistanceflag.R
-import com.egoriku.belarusresistanceflag.common.ui.BadgeVector
+import com.egoriku.belarusresistanceflag.common.ui.Badge
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -33,8 +33,8 @@ fun SectionGithub(onClick: (String) -> Unit) {
                 fontWeight = FontWeight.Bold
             )
             val link = stringResource(R.string.github_source_link)
-            BadgeVector(
-                click = { onClick(link) },
+            Badge(
+                onClick = { onClick(link) },
                 vectorImageResId = R.drawable.ic_github,
                 title = stringResource(R.string.about_screen_github_label)
             )

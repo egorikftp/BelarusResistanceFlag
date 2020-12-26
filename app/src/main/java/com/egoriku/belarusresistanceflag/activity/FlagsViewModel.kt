@@ -43,7 +43,7 @@ class FlagsViewModel(
                     _categoriesFlow.value = CategoriesState.Success(getAreas())
                 }
                 is ResultOf.Failure -> {
-                    Log.d("kek", resultOf.throwable.message.toString())
+                    Log.d("flags", resultOf.throwable.message.toString())
                     _categoriesFlow.value = CategoriesState.Error
                 }
             }

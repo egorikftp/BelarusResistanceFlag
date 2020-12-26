@@ -19,7 +19,7 @@ android {
         targetSdkVersion 30
         versionCode verCode
         versionName verName
-        resConfigs "en", "be", "ru"
+        resConfigs "en", "be-rBY", "ru"
     }
 
     signingConfigs {
