@@ -35,7 +35,7 @@ Built With 🛠
 App screenshots
 -------
 
-<img alt="Icon" src="assets/Screenshot_1.png" width="300" /> <img alt="Icon" src="assets/Screenshot_2.png" width="300" /> <img alt="Icon" src="assets/Screenshot_3.png" width="300" />
+<img alt="Icon" src="assets/Screenshot_1.png" width="300" /> <img alt="Icon" src="assets/Screenshot_2.png" width="300" /> <img alt="Icon" src="assets/Screenshot_3.png" width="300" /> <img alt="Icon" src="assets/Screenshot_4.png" width="300" />
 
 TODO
 -------
