@@ -53,6 +53,7 @@ fun SectionGithub(onClick: (String) -> Unit) {
 
         CoilImage(
             data = R.drawable.ic_logo,
+            contentDescription = null,
             modifier = Modifier
                 .padding(32.dp)
                 .align(Alignment.CenterHorizontally)

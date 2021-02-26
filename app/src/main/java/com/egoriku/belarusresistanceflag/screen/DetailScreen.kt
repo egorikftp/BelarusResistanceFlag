@@ -59,6 +59,8 @@ private fun ZoomableImage(flagModel: FlagModel) {
             modifier = Modifier.fillMaxSize()
         ) { scale, translate ->
             CoilImage(
+                data = flagModel.imageUrl,
+                contentDescription = null,
                 loading = {
                     Box(modifier = Modifier.fillMaxHeight()) {
                         CircularProgressIndicator(
@@ -67,7 +69,6 @@ private fun ZoomableImage(flagModel: FlagModel) {
                         )
                     }
                 },
-                data = flagModel.imageUrl,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
@@ -106,6 +107,7 @@ private fun TopAppBar(
         ) {
             IconButton(onClick = upPressed) {
                 Icon(
+                    contentDescription = null,
                     imageVector = Icons.Rounded.ArrowBack,
                     modifier = Modifier.align(Alignment.CenterVertically),
                 )
@@ -163,6 +165,7 @@ private fun BottomActions(
                         onClick = { onDownloadClick(flagModel) }
                     ) {
                         Icon(
+                            contentDescription = null,
                             imageVector = Icons.Filled.SaveAlt,
                             modifier = Modifier.padding(end = 8.dp)
                         )
@@ -195,6 +198,7 @@ private fun ActionShare(
         onClick = { onShareClick(flagModel) }
     ) {
         Icon(
+            contentDescription = null,
             imageVector = Icons.Filled.Share,
             modifier = Modifier.padding(end = 8.dp)
         )

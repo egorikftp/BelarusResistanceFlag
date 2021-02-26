@@ -26,6 +26,7 @@ fun Badge(vectorImageResId: Int, title: String, onClick: () -> Unit) {
     ) {
         Image(
             imageVector = vectorResource(id = vectorImageResId),
+            contentDescription = null,
             modifier = Modifier
                 .size(50.dp)
                 .padding(4.dp)

@@ -57,7 +57,12 @@ fun MainScreen(
                     BottomNavigationItem(
                         selectedContentColor = MaterialTheme.colors.error,
                         unselectedContentColor = MaterialTheme.colors.onSurface,
-                        icon = { Icon(screen.imageVector) },
+                        icon = {
+                            Icon(
+                                contentDescription = null,
+                                imageVector = screen.imageVector
+                            )
+                        },
                         label = { Text(stringResource(screen.resourceId)) },
                         alwaysShowLabels = false,
                         selected = currentRoute == screen.route,

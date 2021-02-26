@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -31,11 +32,14 @@ fun FlagsScreen(
         Column {
             TopAppBar {
                 Row(
-                    Modifier.fillMaxHeight().weight(1f),
+                    Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = upPressed) {
                         Icon(
+                            contentDescription = null,
                             imageVector = Icons.Rounded.ArrowBack,
                             modifier = Modifier.align(Alignment.CenterVertically),
                         )
