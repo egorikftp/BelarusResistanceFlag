@@ -1,12 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "com.google.gms.google-services"
+apply plugin: "com.google.firebase.crashlytics"
 
-def versionProp = loadProperties('version.properties')
-def version = versionProp['VERSION'] as int
-def sub_version = versionProp['SUB_VERSION'] as int
-def build_version = versionProp['BUILD_VERSION'] as int
+def versionProp = loadProperties("version.properties")
+def version = versionProp["VERSION"] as int
+def sub_version = versionProp["SUB_VERSION"] as int
+def build_version = versionProp["BUILD_VERSION"] as int
 def verCode = version * 100000 + sub_version * 1000 + build_version
 def verName = "$version.$sub_version.$build_version"
 
@@ -38,8 +38,9 @@ android {
             shrinkResources true
             debuggable false
             multiDexEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
+
         debug {
             firebaseCrashlytics {
                 mappingFileUploadEnabled false
@@ -48,17 +49,18 @@ android {
             versionNameSuffix = "-debug"
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
         useIR = true
     }
 
     buildFeatures {
-        viewBinding = true
         compose true
     }
 
@@ -66,6 +68,7 @@ android {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion kotlin_version
     }
+
     gradle.taskGraph.whenReady { taskGraph ->
         if (taskGraph.hasTask(assembleDebug) || taskGraph.hasTask(assembleRelease)) {
             autoIncrementBuildVersionNumber()
@@ -83,30 +86,34 @@ dependencies {
     implementation "androidx.core:core-ktx:1.5.0-alpha05"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
 
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.runtime:runtime:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+
+    implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //implementation "androidx.activity:activity-compose:1.3.0-alpha03"
+  //  implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+
+    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
 
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-compose:$koin_version"
 
     implementation "androidx.navigation:navigation-compose:$nav_compose_version"
 
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.1"
     implementation "dev.chrisbanes.accompanist:accompanist-insets:0.4.1"
 
-    implementation platform('com.google.firebase:firebase-bom:26.2.0')
-    implementation 'com.google.firebase:firebase-crashlytics'
-    implementation 'com.google.firebase:firebase-analytics'
+    implementation platform("com.google.firebase:firebase-bom:26.5.0")
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-analytics"
 }
 
 Properties loadProperties(String path) {
@@ -121,8 +128,8 @@ Properties loadProperties(String path) {
 }
 
 def autoIncrementBuildVersionNumber() {
-    def prop = loadProperties('version.properties')
-    def newVersion = (prop['BUILD_VERSION'] as int) + 1
-    prop['BUILD_VERSION'] = newVersion as String
-    prop.store(file('version.properties').newWriter(), null)
+    def prop = loadProperties("version.properties")
+    def newVersion = (prop["BUILD_VERSION"] as int) + 1
+    prop["BUILD_VERSION"] = newVersion as String
+    prop.store(file("version.properties").newWriter(), null)
 }
