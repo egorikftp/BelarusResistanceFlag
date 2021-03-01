@@ -2,7 +2,7 @@ package com.egoriku.belarusresistanceflag.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.compose.ui.platform.setContent
+import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.egoriku.belarusresistanceflag.ext.browseUrl
 import com.egoriku.belarusresistanceflag.screen.main.RootNavGraph

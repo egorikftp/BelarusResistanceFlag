@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.egoriku.belarusresistanceflag.R
-import com.egoriku.belarusresistanceflag.common.ui.Badge
+import com.egoriku.belarusresistanceflag.component.ui.Badge
 
 @Composable
 fun SectionSource(onClick: (String) -> Unit) {

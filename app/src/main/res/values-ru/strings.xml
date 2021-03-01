@@ -13,4 +13,5 @@
     <string name="about_screen_github_label">Мы на Github</string>
     <string name="details_action_share">Поделиться фото</string>
     <string name="details_action_download">Скачать как %1$s</string>
+    <string name="accessibility_common_network_image">Изображение из интернета</string>
 </resources>

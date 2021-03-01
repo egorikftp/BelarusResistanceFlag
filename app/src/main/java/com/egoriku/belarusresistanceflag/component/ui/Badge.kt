@@ -1,4 +1,4 @@
-package com.egoriku.belarusresistanceflag.common.ui
+package com.egoriku.belarusresistanceflag.component.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -25,7 +25,7 @@ fun Badge(vectorImageResId: Int, title: String, onClick: () -> Unit) {
             .clickable(onClick = { onClick() })
     ) {
         Image(
-            imageVector = vectorResource(id = vectorImageResId),
+            painter = painterResource(id = vectorImageResId),
             contentDescription = null,
             modifier = Modifier
                 .size(50.dp)

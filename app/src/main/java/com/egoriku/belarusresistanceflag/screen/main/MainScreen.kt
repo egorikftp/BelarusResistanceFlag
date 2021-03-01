@@ -64,7 +64,7 @@ fun MainScreen(
                             )
                         },
                         label = { Text(stringResource(screen.resourceId)) },
-                        alwaysShowLabels = false,
+                        alwaysShowLabel = false,
                         selected = currentRoute == screen.route,
                         onClick = {
                             if (currentRoute != screen.route) {

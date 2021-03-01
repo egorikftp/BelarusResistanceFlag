@@ -10,17 +10,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.egoriku.belarusresistanceflag.R
-import com.egoriku.belarusresistanceflag.common.ui.Zoomable
+import com.egoriku.belarusresistanceflag.component.foundation.NetworkImage
+import com.egoriku.belarusresistanceflag.component.foundation.Zoomable
 import com.egoriku.belarusresistanceflag.domain.model.Download
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 import com.egoriku.belarusresistanceflag.ext.bottomTopShadow
 import com.egoriku.belarusresistanceflag.ext.topBottomShadow
 import com.egoriku.belarusresistanceflag.theme.DetailsTheme
-import dev.chrisbanes.accompanist.coil.CoilImage
 import dev.chrisbanes.accompanist.insets.navigationBarsHeight
 import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 import dev.chrisbanes.accompanist.insets.statusBarsHeight
@@ -55,29 +54,13 @@ private fun ZoomableImage(flagModel: FlagModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        Zoomable(
-            modifier = Modifier.fillMaxSize()
-        ) { scale, translate ->
-            CoilImage(
+        Zoomable {
+            NetworkImage(
+                fadeIn = true,
                 data = flagModel.imageUrl,
-                contentDescription = null,
                 loading = {
-                    Box(modifier = Modifier.fillMaxHeight()) {
-                        CircularProgressIndicator(
-                            color = MaterialTheme.colors.error,
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .graphicsLayer(
-                        scaleX = scale,
-                        scaleY = scale,
-                        translationY = translate.y,
-                        translationX = translate.x
-                    )
+                    CircularProgressIndicator(color = MaterialTheme.colors.error)
+                }
             )
         }
     }
@@ -102,7 +85,7 @@ private fun TopAppBar(
         Row(
             modifier = Modifier
                 .statusBarsPadding()
-                .preferredHeight(56.dp),
+                .height(56.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = upPressed) {

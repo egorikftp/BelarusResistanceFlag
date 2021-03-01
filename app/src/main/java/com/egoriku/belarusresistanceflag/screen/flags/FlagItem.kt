@@ -11,10 +11,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.egoriku.belarusresistanceflag.component.foundation.NetworkImage
 import com.egoriku.belarusresistanceflag.domain.model.FlagArea
 import com.egoriku.belarusresistanceflag.domain.model.FlagModel
 import com.egoriku.belarusresistanceflag.ext.EMPTY
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun FlagItem(
@@ -26,10 +26,9 @@ fun FlagItem(
             modifier = Modifier
                 .clickable(onClick = { openDetails(model.id) })
         ) {
-            CoilImage(
+            NetworkImage(
                 data = model.thumbnailUrl,
                 fadeIn = true,
-                contentDescription = null,
                 modifier = Modifier
                     .aspectRatio(1.6f)
                     .fillMaxSize()

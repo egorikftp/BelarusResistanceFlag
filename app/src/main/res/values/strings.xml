@@ -16,4 +16,5 @@
     <string name="add_new_flag_link" translatable="false">https://t.me/dzechat_bot</string>
     <string name="details_action_share">Share as photo</string>
     <string name="details_action_download">Download as %1$s</string>
+    <string name="accessibility_common_network_image">Network image</string>
 </resources>

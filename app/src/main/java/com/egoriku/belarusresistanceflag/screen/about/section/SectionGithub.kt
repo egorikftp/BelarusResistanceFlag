@@ -14,8 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.egoriku.belarusresistanceflag.BuildConfig
 import com.egoriku.belarusresistanceflag.R
-import com.egoriku.belarusresistanceflag.common.ui.Badge
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.egoriku.belarusresistanceflag.component.foundation.NetworkImage
+import com.egoriku.belarusresistanceflag.component.ui.Badge
 
 @Composable
 fun SectionGithub(onClick: (String) -> Unit) {
@@ -51,9 +51,8 @@ fun SectionGithub(onClick: (String) -> Unit) {
             )
         }
 
-        CoilImage(
+        NetworkImage(
             data = R.drawable.ic_logo,
-            contentDescription = null,
             modifier = Modifier
                 .padding(32.dp)
                 .align(Alignment.CenterHorizontally)

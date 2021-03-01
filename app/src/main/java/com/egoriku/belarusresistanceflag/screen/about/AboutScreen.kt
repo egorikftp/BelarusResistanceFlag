@@ -1,7 +1,7 @@
 package com.egoriku.belarusresistanceflag.screen.about
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,13 +15,19 @@ fun AboutScreen(
     modifier: Modifier = Modifier,
     onUrlClick: (String) -> Unit
 ) {
-    ScrollableColumn(modifier = modifier.padding(16.dp)) {
-        SectionSource(onClick = onUrlClick)
-        SectionAddNew(
-            modifier = Modifier.padding(top = 16.dp, bottom = 32.dp),
-            onClick = onUrlClick
-        )
-        SectionGithub(onClick = onUrlClick)
+    LazyColumn(modifier = modifier.padding(16.dp)) {
+        item {
+            SectionSource(onClick = onUrlClick)
+        }
+        item {
+            SectionAddNew(
+                modifier = Modifier.padding(top = 16.dp, bottom = 32.dp),
+                onClick = onUrlClick
+            )
+        }
+        item {
+            SectionGithub(onClick = onUrlClick)
+        }
     }
 }
 
