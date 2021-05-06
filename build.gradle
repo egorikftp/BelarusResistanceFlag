@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha09'
+        compose_version = '1.0.0-beta06'
         kotlin_version = "1.4.21"
         koin_version = "2.2.2"
         nav_compose_version = "1.0.0-alpha04"
