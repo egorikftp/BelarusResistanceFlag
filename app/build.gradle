@@ -101,7 +101,7 @@ dependencies {
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.1"
     implementation "dev.chrisbanes.accompanist:accompanist-insets:0.4.1"
 
-    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'
 }
